@@ -3,9 +3,11 @@ import { product } from "./ProdactContext";
 import CartItem from "./../components/CartItem";
 interface addToCartType {
   addToCart: (product: product, id: number) => void;
+  cart: product[];
 }
 const cartDefaultValue: addToCartType = {
   addToCart: () => {},
+  cart: [],
 };
 interface CartProviderProps {
   children: ReactNode;
@@ -33,7 +35,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   };
   console.log(cart);
   return (
-    <cartContext.Provider value={{ addToCart }}>
+    <cartContext.Provider value={{ cart, addToCart }}>
       {children}
     </cartContext.Provider>
   );
