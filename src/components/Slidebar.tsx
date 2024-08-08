@@ -28,7 +28,7 @@ const Slidebar = () => {
       </div>
       <div>
         {cart.map((item) => {
-          return <div>{item.title}</div>;
+          return <CartItem key={item.id} item={item} />;
         })}
       </div>
     </div>
