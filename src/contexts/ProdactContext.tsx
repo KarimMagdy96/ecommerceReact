@@ -4,7 +4,7 @@ interface ProductProviderProps {
   children: React.ReactNode;
 }
 
-interface product {
+export interface product {
   id: string;
   title: string;
   price: number;

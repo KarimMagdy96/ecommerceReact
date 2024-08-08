@@ -1,7 +1,42 @@
-import React from "react";
+import React, { createContext, ReactNode, useState } from "react";
+import { product } from "./ProdactContext";
+import CartItem from "./../components/CartItem";
+interface addToCartType {
+  addToCart: (product: product, id: number) => void;
+}
+const cartDefaultValue: addToCartType = {
+  addToCart: () => {},
+};
+interface CartProviderProps {
+  children: ReactNode;
+}
+export const cartContext = createContext<addToCartType>(cartDefaultValue);
+const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
+  const [cart, setCart] = useState<[] | any>([]);
 
-const CartContext = () => {
-  return <div>CartContext</div>;
+  const addToCart = (product: product, id: number) => {
+    const newItem = { ...product, amount: 1 };
+
+    const CartItem: any = cart.find((item: any) => item.id === id);
+    if (CartItem) {
+      const newCart: any = [...cart].map((item: any) => {
+        if (item.id === id) {
+          return { ...item, amount: CartItem.amount + 1 };
+        } else {
+          return item;
+        }
+      });
+      setCart(newCart);
+    } else {
+      setCart([...cart, newItem]);
+    }
+  };
+  console.log(cart);
+  return (
+    <cartContext.Provider value={{ addToCart }}>
+      {children}
+    </cartContext.Provider>
+  );
 };
 
-export default CartContext;
+export default CartProvider;

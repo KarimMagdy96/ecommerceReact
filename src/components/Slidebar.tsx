@@ -4,6 +4,7 @@ import { IoMdArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
 import { SidebarContext } from "../contexts/SlidebarContext";
+import { cartContext } from "../contexts/CartContext";
 const Slidebar = () => {
   const { isOpen, SetIsOpen } = useContext(SidebarContext);
 

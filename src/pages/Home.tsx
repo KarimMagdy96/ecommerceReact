@@ -4,7 +4,7 @@ import Product from "../components/Product";
 
 const Home = () => {
   const { products } = useContext(ProductContext);
-  console.log(products);
+
   return (
     <section className=" py-16">
       <div className="container mx-auto">
