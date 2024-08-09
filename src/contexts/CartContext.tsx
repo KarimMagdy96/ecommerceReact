@@ -8,6 +8,7 @@ interface addToCartType {
   increaseAmount: (id: number) => void;
   decreaseAmount: (id: number) => void;
   itemAmount: number;
+  total: number;
 }
 const cartDefaultValue: addToCartType = {
   addToCart: () => {},
@@ -17,6 +18,7 @@ const cartDefaultValue: addToCartType = {
   increaseAmount: () => {},
   decreaseAmount: () => {},
   itemAmount: 0,
+  total: 0,
 };
 interface CartProviderProps {
   children: ReactNode;
@@ -25,6 +27,8 @@ export const cartContext = createContext<addToCartType>(cartDefaultValue);
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cart, setCart] = useState<[] | any>([]);
   const [itemAmount, setItemAmount] = useState<number>(0);
+  const [total, setTotal] = useState<number>(0);
+
   useEffect(() => {
     if (cart) {
       const amount = cart.reduce((accumulator: any, currentValue: any) => {
@@ -90,6 +94,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         increaseAmount,
         decreaseAmount,
         itemAmount,
+        total,
       }}
     >
       {children}
