@@ -31,17 +31,16 @@ const Slidebar = () => {
         {cart.map((item) => {
           return <CartItem key={item.id} item={item} />;
         })}
-
-        <div className="  flex justify-between text-primary font-medium mt-4 px-4 py-2">
-          <div className="  flex justify-center items-center">
-            <span>Total:</span> {total} EGP
-          </div>
-          <div
-            onClick={clearCart}
-            className=" cursor-pointer py-4 bg-red-500 text-white w-12 text-white h-12 flex justify-center items-center text-xl"
-          >
-            <FiTrash2 />
-          </div>
+      </div>
+      <div className="  flex justify-between text-primary font-medium mt-4 px-4 py-2">
+        <div className="  flex justify-center items-center">
+          <span>Total: </span> {Number(total.toFixed(2))} EGP
+        </div>
+        <div
+          onClick={clearCart}
+          className=" cursor-pointer py-4 bg-red-500 text-white w-12 text-white h-12 flex justify-center items-center text-xl"
+        >
+          <FiTrash2 />
         </div>
       </div>
     </div>

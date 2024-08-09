@@ -30,6 +30,13 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [total, setTotal] = useState<number>(0);
 
   useEffect(() => {
+    const total = cart.reduce((accumulator: any, currentValue: any) => {
+      return accumulator + currentValue.price * currentValue.amount;
+    }, 0);
+    setTotal(total);
+  }, [cart]);
+
+  useEffect(() => {
     if (cart) {
       const amount = cart.reduce((accumulator: any, currentValue: any) => {
         return accumulator + currentValue.amount;
