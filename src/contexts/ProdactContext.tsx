@@ -5,7 +5,7 @@ interface ProductProviderProps {
 }
 
 export interface product {
-  id: string;
+  id: number;
   title: string;
   price: number;
   description: string;

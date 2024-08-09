@@ -1,13 +1,18 @@
 import React, { createContext, ReactNode, useState } from "react";
 import { product } from "./ProdactContext";
-import CartItem from "./../components/CartItem";
 interface addToCartType {
   addToCart: (product: product, id: number) => void;
   cart: product[];
+  removeCartItem: (id: number) => void;
+  clearCart: () => void;
+  increaseAmount: (id: number) => void;
 }
 const cartDefaultValue: addToCartType = {
   addToCart: () => {},
   cart: [],
+  removeCartItem: () => {},
+  clearCart: () => {},
+  increaseAmount: () => {},
 };
 interface CartProviderProps {
   children: ReactNode;
@@ -33,9 +38,23 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       setCart([...cart, newItem]);
     }
   };
-  console.log(cart);
+  const removeCartItem = (id: number) => {
+    const newCart = cart.filter((item: any) => {
+      return item.id !== id;
+    });
+    setCart(newCart);
+  };
+  const clearCart = () => {
+    setCart([]);
+  };
+  const increaseAmount = (id: number) => {
+    const CartItem: any = cart.find((item: any) => item.id === id);
+    addToCart(CartItem, id);
+  };
   return (
-    <cartContext.Provider value={{ cart, addToCart }}>
+    <cartContext.Provider
+      value={{ cart, addToCart, removeCartItem, clearCart, increaseAmount }}
+    >
       {children}
     </cartContext.Provider>
   );
