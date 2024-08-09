@@ -30,7 +30,7 @@ const Slidebar = () => {
       </div>
       <div>
         {cart.map((item) => {
-          return <CartItem key={1} item={item} />;
+          return <CartItem key={item.id} item={item} />;
         })}
 
         <div className="  flex justify-between text-primary font-medium mt-4 px-4 py-2">

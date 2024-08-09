@@ -5,7 +5,6 @@ import ProductDetails from "./pages/ProductDetails";
 import Slidebar from "./components/Slidebar";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { ProductProvider } from "./contexts/ProdactContext";
 
 function App() {
   return (
@@ -14,9 +13,7 @@ function App() {
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route path="/" element={<Header />} />
-            <Route path="/" element={<Slidebar />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="*" element={<div>Page not found</div>} />
           </Routes>

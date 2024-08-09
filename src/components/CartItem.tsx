@@ -55,7 +55,7 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
               </div>
               <div
                 onClick={() => increaseAmount(id)}
-                className="flex flex-1 cursor-pointer h-full items-center justify-center"
+                className="flex flex-1 cursor-pointer h-full items-center justify-center "
               >
                 {" "}
                 <IoMdAdd />
@@ -65,7 +65,7 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
               {price} EGP
             </div>
             <div className=" flex flex-1 justify-end  items-center text-primary font-medium">
-              {amount ? Number((price * amount).toFixed(2)) : 1}
+              {amount && Number((price * amount).toFixed(2))}
             </div>
           </div>
         </div>
