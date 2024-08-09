@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useState } from "react";
+import React, { createContext, ReactNode, useEffect, useState } from "react";
 import { product } from "./ProdactContext";
 interface addToCartType {
   addToCart: (product: product, id: number) => void;
@@ -25,6 +25,14 @@ export const cartContext = createContext<addToCartType>(cartDefaultValue);
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cart, setCart] = useState<[] | any>([]);
   const [itemAmount, setItemAmount] = useState<number>(0);
+  useEffect(() => {
+    if (cart) {
+      const amount = cart.reduce((accumulator: any, currentValue: any) => {
+        return accumulator + currentValue.amount;
+      }, 0);
+      setItemAmount(amount);
+    }
+  }, [cart]);
 
   const addToCart = (product: product, id: number) => {
     const newItem = { ...product, amount: 1 };
