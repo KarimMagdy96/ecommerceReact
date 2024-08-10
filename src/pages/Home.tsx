@@ -15,7 +15,7 @@ const Home = () => {
     <>
       <Hero />
       <section className=" py-16">
-        <div className=" w-screen flex flex-wrap justify-center items-center gap-x-4">
+        <div className=" w-screen flex flex-wrap justify-center items-center gap-x-4 px-2">
           {["All", ...categories].map((category) => (
             <button
               key={category}
