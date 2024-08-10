@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import { BsEyeFill, BsPlus } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { cartContext } from "../contexts/CartContext";
-
+import ProductContext from "../contexts/ProdactContext";
 const Product: React.FC<any> = ({ product }) => {
   const { addToCart } = useContext(cartContext);
+
   const { id, category, image, price, title } = product;
 
   return (
