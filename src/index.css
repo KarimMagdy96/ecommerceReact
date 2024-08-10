@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.filterbtnActive {
+  background-color: #000;
+  color: #fff;
+}

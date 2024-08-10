@@ -18,12 +18,14 @@ interface ProductContextType {
   products: product[];
   handelfilterProducts: (category: string) => void;
   filterProducts: product[];
+  filteractive: string | null;
 }
 
 const defaultContextValue: ProductContextType = {
   products: [],
   handelfilterProducts: () => {},
   filterProducts: [],
+  filteractive: null,
 };
 
 export const ProductContext =
@@ -34,6 +36,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
 }) => {
   const [products, setProducts] = useState<product[]>([]);
   const [filterProducts, setFilterProducts] = useState<product[]>([]);
+  const [filteractive, setfilteractive] = useState<string | null>("All");
 
   const getProducts = async () => {
     try {
@@ -53,6 +56,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
   }, []);
 
   const handelfilterProducts = (category: string) => {
+    setfilteractive(category);
     if (category === "All") {
       setProducts(filterProducts);
       return;
@@ -65,7 +69,12 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
 
   return (
     <ProductContext.Provider
-      value={{ products, handelfilterProducts, filterProducts }}
+      value={{
+        products,
+        handelfilterProducts,
+        filterProducts,
+        filteractive,
+      }}
     >
       {children}
     </ProductContext.Provider>

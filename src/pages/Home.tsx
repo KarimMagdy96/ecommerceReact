@@ -4,13 +4,12 @@ import Product from "../components/Product";
 import Hero from "../components/Hero";
 
 const Home = () => {
-  const { products, handelfilterProducts, filterProducts } =
+  const { products, handelfilterProducts, filterProducts, filteractive } =
     useContext(ProductContext);
 
   const categories = [
     ...new Set([...filterProducts].map((product) => product?.category)),
   ];
-  console.log(categories);
 
   return (
     <>
@@ -19,7 +18,10 @@ const Home = () => {
         <div className=" flex gap-2 mb-7 mx-auto  justify-center">
           {["All", ...categories].map((category) => (
             <button
-              className=" capitalize border rounded-lg  text-sm p-2 md:py-2 md:px-4 md:text-base  "
+              key={category}
+              className={`${
+                filteractive === category ? "filterbtnActive" : ""
+              } capitalize border rounded-lg  text-sm p-2 md:py-2 md:px-4 md:text-base `}
               onClick={() => handelfilterProducts(category)}
             >
               {category}
