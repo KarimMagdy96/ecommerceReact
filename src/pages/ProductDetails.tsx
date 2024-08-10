@@ -22,7 +22,7 @@ const ProductDetails = () => {
     <section className=" pt-32 mt-3 pb-12 lg:py-32 min-h-fit flex items-center justify-center">
       <div className="container max-auto">
         <div className=" flex gap-x-16 gap-y-3 flex-col lg:flex-row items-center justify-center">
-          <div className=" border p-4 bg-slate-700 ">
+          <div className=" border p-4  ">
             <img
               className="   max-w-[200px] lg:max-w-sm"
               src={image}
