@@ -19,12 +19,12 @@ const ProductDetails = () => {
   const { title, price, description, image } = product;
 
   return (
-    <section className=" pt-12 mt-3 pb-12 lg:py-32  h-screen items-center justify-center">
-      <div className="container max-auto">
-        <div className=" flex gap-x-16 gap-y-3 flex-col lg:flex-row items-center justify-center">
+    <section className=" pt-12 mt-3 pb-12 lg:py-32  flex h-screen items-center justify-center">
+      <div className="container max-auto ">
+        <div className=" flex  gap-x-16 gap-y-3 flex-col lg:flex-row items-center justify-center">
           <div className=" border p-4  ">
             <img
-              className="  max-h-96   max-w-[150px] lg:max-w-sm"
+              className="  max-h-96   max-w-[190px] lg:max-w-sm"
               src={image}
               alt={title}
             />
@@ -33,10 +33,10 @@ const ProductDetails = () => {
             <h1 className=" text-[26px] font-medium mb-2 line-clamp-2 ">
               {title}
             </h1>
-            <div className="text-xl text-red-500 font-medium mb-6">
+            <div className="text-xl text-red-500 font-medium mb-4">
               {price} EGP
             </div>
-            <p className=" mb-8 line-clamp-4">{description}</p>
+            <p className=" mb-6 line-clamp-4">{description}</p>
             <button
               onClick={() => addToCart(product, parseInt(id || "0"))}
               className=" bg-primary py-4 px-8 text-white"
