@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { product } from "./../contexts/ProdactContext";
+
 import { Link } from "react-router-dom";
 import { IoMdAdd, IoMdClose, IoMdRemove } from "react-icons/io";
 import { cartContext } from "../contexts/CartContext";

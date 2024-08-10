@@ -1,7 +1,3 @@
-import React from "react";
-import img from "../img/hero.webp";
-import { Link } from "react-router-dom";
-
 const Hero = () => {
   return (
     <section className=" bg-hero h-[800px] bg-cover bg-no-repeat bg-center py-24">
