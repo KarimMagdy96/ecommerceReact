@@ -16,7 +16,7 @@ const Home = () => {
     <>
       <Hero />
       <section className=" py-16">
-        <div className=" flex gap-2 mb-5 mx-auto  justify-center">
+        <div className=" flex gap-2 mb-7 mx-auto  justify-center">
           {["All", ...categories].map((category) => (
             <button
               className=" capitalize border rounded-lg  text-sm p-2 md:py-2 md:px-4 md:text-base  "
