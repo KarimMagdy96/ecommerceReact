@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { BsEyeFill, BsPlus } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { cartContext } from "../contexts/CartContext";
-import ProductContext from "../contexts/ProdactContext";
+
 const Product: React.FC<any> = ({ product }) => {
   const { addToCart } = useContext(cartContext);
 
@@ -12,7 +12,7 @@ const Product: React.FC<any> = ({ product }) => {
     <div>
       <div className=" border border-[#e4e4e4] h-[300px] mb-4 relative  group transition">
         <div className=" w-full h-full flex justify-center items-center">
-          <div className=" w-[200px] mx-auto flex justify-center items-center">
+          <div className=" w-[200px] mx-auto flex justify-center items-center ">
             <img
               className=" max-h-[160px]  group-hover:scale-110 transition duration-300"
               src={image}
