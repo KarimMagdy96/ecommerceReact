@@ -14,7 +14,7 @@ const Slidebar = () => {
     <div
       className={`${
         isOpen ? "right-0" : " -right-full"
-      } w-full bg-white fixed top-0 h-full shadow-2xl md:w-[35vw] xl:w-[30vw] transition-all duration-300 z-20 px-4 lg:px-[35px] `}
+      } w-full bg-white fixed top-0 h-full shadow-2xl md:w-[40vw] xl:w-[32vw] transition-all duration-300 z-20 px-4 lg:px-[35px] `}
     >
       <div className=" flex items-center py-6 border-b  justify-between">
         <div className=" uppercase text-sm font-semibold">
@@ -27,12 +27,12 @@ const Slidebar = () => {
           <IoMdArrowForward className=" text-2xl" />
         </div>
       </div>
-      <div className="  flex flex-col gap-y-2 h-[520px] lg:h-[640px]  overflow-y-auto overflow-x-hidden border-b  border  ">
+      <div className="  flex flex-col gap-y-2 h-3/5   overflow-y-auto overflow-x-hidden border-b  border  ">
         {cart.map((item) => {
           return <CartItem key={item.id} item={item} />;
         })}
       </div>
-      <div className="  flex justify-between text-primary font-medium mt-4 px-4 py-2">
+      <div className="  flex justify-between text-primary font-medium mt-2  py-2">
         <div className="  flex justify-center items-center">
           <span>Total: </span> {Number(total.toFixed(2))} EGP
         </div>
@@ -42,6 +42,20 @@ const Slidebar = () => {
         >
           <FiTrash2 />
         </div>
+      </div>
+      <div className="  flex flex-col ">
+        <Link
+          className=" bg-gray-200 text-center font-semibold p-3  mb-3"
+          to={""}
+        >
+          View Cart
+        </Link>
+        <Link
+          className=" text-white font-semibold text-center bg-black p-3  mb-3 "
+          to={""}
+        >
+          Checkout
+        </Link>
       </div>
     </div>
   );
