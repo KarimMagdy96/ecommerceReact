@@ -8,7 +8,7 @@ import { cartContext } from "../contexts/CartContext";
 
 const Slidebar = () => {
   const { isOpen, SetIsOpen } = useContext(SidebarContext);
-  const { cart, clearCart, total } = useContext(cartContext);
+  const { cart, clearCart, total, itemAmount } = useContext(cartContext);
 
   return (
     <div
@@ -18,7 +18,7 @@ const Slidebar = () => {
     >
       <div className=" flex items-center py-6 border-b  justify-between">
         <div className=" uppercase text-sm font-semibold">
-          Shopping Cart (0)
+          Shopping Cart ({itemAmount})
         </div>
         <div
           onClick={() => SetIsOpen(false)}
