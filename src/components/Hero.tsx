@@ -17,7 +17,7 @@ const Hero = () => {
               <div className=" hover:bg-transparent hover:text-gray-950 transition-all duration-300 cursor-pointer hover:border-black border bg-pink-900 text-white text-sm px-4 py-4 rounded-md mt-4 text-center">
                 <button>Discover Our Collection</button>
               </div>
-              <div className=" bg-transparent border  border-gray-800 border-2 text-gray-950 text-white text-sm px-4 py-4 rounded-md mt-4 text-center">
+              <div className=" bg-transparent   cursor-pointer border-gray-800 border-2 text-gray-950  text-sm px-4 py-4 rounded-md mt-4 text-center">
                 <button>Find More</button>
               </div>
             </div>
