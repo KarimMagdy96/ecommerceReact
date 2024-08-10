@@ -15,13 +15,13 @@ const Home = () => {
     <>
       <Hero />
       <section className=" py-16">
-        <div className=" flex gap-2 mb-7 mx-auto  justify-center">
+        <div className=" flex gap-1 mb-7 mx-auto  justify-center">
           {["All", ...categories].map((category) => (
             <button
               key={category}
               className={`${
                 filteractive === category ? "filterbtnActive" : ""
-              } capitalize border rounded-lg  text-sm p-2 md:py-2 md:px-4 md:text-base `}
+              } capitalize border rounded-lg  text-sm p-1.5 md:text-base `}
               onClick={() => handelfilterProducts(category)}
             >
               {category}
