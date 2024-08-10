@@ -17,11 +17,13 @@ export interface product {
 interface ProductContextType {
   products: product[];
   handelfilterProducts: (category: string) => void;
+  filterProducts: product[];
 }
 
 const defaultContextValue: ProductContextType = {
   products: [],
   handelfilterProducts: () => {},
+  filterProducts: [],
 };
 
 export const ProductContext =
@@ -51,7 +53,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
   }, []);
 
   const handelfilterProducts = (category: string) => {
-    if (category === "all") {
+    if (category === "All") {
       setProducts(filterProducts);
       return;
     }
@@ -62,7 +64,9 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
   };
 
   return (
-    <ProductContext.Provider value={{ products, handelfilterProducts }}>
+    <ProductContext.Provider
+      value={{ products, handelfilterProducts, filterProducts }}
+    >
       {children}
     </ProductContext.Provider>
   );

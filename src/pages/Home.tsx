@@ -4,44 +4,28 @@ import Product from "../components/Product";
 import Hero from "../components/Hero";
 
 const Home = () => {
-  const { products, handelfilterProducts } = useContext(ProductContext);
+  const { products, handelfilterProducts, filterProducts } =
+    useContext(ProductContext);
+
+  const categories = [
+    ...new Set([...filterProducts].map((product) => product?.category)),
+  ];
+  console.log(categories);
 
   return (
     <>
       <Hero />
       <section className=" py-16">
         <div className="container mx-auto">
-          <div className=" flex gap-7 mb-5">
-            <button
-              className=" capitalize border rounded-lg py-2 px-4"
-              onClick={() => handelfilterProducts("all")}
-            >
-              All
-            </button>
-            <button
-              className=" capitalize border rounded-lg py-2 px-4"
-              onClick={() => handelfilterProducts("jewelery")}
-            >
-              jewelery
-            </button>
-            <button
-              className=" capitalize border rounded-lg py-2 px-4"
-              onClick={() => handelfilterProducts("men's clothing")}
-            >
-              men's clothing
-            </button>
-            <button
-              className=" capitalize border rounded-lg py-2 px-4"
-              onClick={() => handelfilterProducts("electronics")}
-            >
-              electronics
-            </button>
-            <button
-              className=" capitalize border rounded-lg py-2 px-4"
-              onClick={() => handelfilterProducts("women's clothing")}
-            >
-              women's clothing
-            </button>
+          <div className=" flex gap-2 mb-5 ">
+            {["All", ...categories].map((category) => (
+              <button
+                className=" capitalize border rounded-lg  text-sm p-2 md:py-2 md:px-4 md:text-base  "
+                onClick={() => handelfilterProducts(category)}
+              >
+                {category}
+              </button>
+            ))}
           </div>
           <div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 
