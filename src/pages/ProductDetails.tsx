@@ -30,11 +30,13 @@ const ProductDetails = () => {
             />
           </div>
           <div className=" p-1  text-center lg:text-left lg:w-1/2 ">
-            <h1 className=" text-[26px] font-medium mb-2  ">{title}</h1>
+            <h1 className=" text-[26px] font-medium mb-2 line-clamp-2 ">
+              {title}
+            </h1>
             <div className="text-xl text-red-500 font-medium mb-6">
               {price} EGP
             </div>
-            <p className=" mb-8 ">{description}</p>
+            <p className=" mb-8 line-clamp-4">{description}</p>
             <button
               onClick={() => addToCart(product, parseInt(id || "0"))}
               className=" bg-primary py-4 px-8 text-white"
