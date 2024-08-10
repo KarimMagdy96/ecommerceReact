@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { SidebarContext } from "../contexts/SlidebarContext";
-import { BsCart } from "react-icons/bs";
+
 import { cartContext } from "../contexts/CartContext";
 import { Link } from "react-router-dom";
 import { RiStoreFill } from "react-icons/ri";
+import { MdOutlineShoppingBag } from "react-icons/md";
 
 const Header = () => {
   const { SetIsOpen, isOpen } = useContext(SidebarContext);
@@ -30,7 +31,7 @@ const Header = () => {
           className=" cursor-pointer flex relative "
           onClick={() => SetIsOpen(!isOpen)}
         >
-          <BsCart className=" text-2xl " />
+          <MdOutlineShoppingBag className=" text-2xl " />
           <div className=" bg-red-500 absolute -right-2 -bottom-2 text-[12px] w-[18px] h-[18px] text-white rounded-full flex justify-center items-center">
             {itemAmount}
           </div>
