@@ -45,6 +45,7 @@ const Slidebar = () => {
       </div>
       <div className="  flex flex-col ">
         <Link
+          onClick={() => SetIsOpen(false)}
           className=" bg-gray-200 text-center font-semibold p-3  mb-3"
           to={"/cart"}
         >
