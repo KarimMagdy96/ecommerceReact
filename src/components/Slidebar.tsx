@@ -50,12 +50,6 @@ const Slidebar = () => {
         >
           View Cart
         </Link>
-        <Link
-          className=" text-white font-semibold text-center bg-black p-3  mb-3 "
-          to={""}
-        >
-          Checkout
-        </Link>
       </div>
     </div>
   );
