@@ -27,7 +27,7 @@ const Slidebar = () => {
           <IoMdArrowForward className=" text-2xl" />
         </div>
       </div>
-      <div className="  flex flex-col gap-y-2 h-3/5   overflow-y-auto overflow-x-hidden border-b  border  ">
+      <div className="   flex flex-col gap-y-2 h-2/3   overflow-y-auto overflow-x-hidden border-b    ">
         {cart.map((item) => {
           return <CartItem key={item.id} item={item} />;
         })}
