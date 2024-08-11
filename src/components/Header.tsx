@@ -14,7 +14,7 @@ import {
 
 const Header = () => {
   const { SetIsOpen, isOpen } = useContext(SidebarContext);
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(true);
   const [isActive, setIsActive] = useState(false);
   const { itemAmount } = useContext(cartContext);
   useEffect(() => {
