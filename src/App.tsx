@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import ProductDetails from "./pages/ProductDetails";
@@ -9,7 +9,10 @@ import Cart from "./components/Cart";
 import Checkout from "./components/Cheakout";
 import SignInPage from "./components/SignInPage";
 import SignUpPage from "./components/SignUpPage";
+import { useAuth } from "@clerk/clerk-react";
+
 function App() {
+  const { isSignedIn } = useAuth();
   return (
     <>
       <div className=" overflow-hidden">
@@ -17,11 +20,14 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/sign-in" element={<SignInPage />} />
             <Route path="/sign-up" element={<SignUpPage />} />
+            <Route path="/sign-in" element={<SignInPage />} />
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/Checkout" element={<Checkout />} />
+            <Route
+              path="/Checkout"
+              element={isSignedIn ? <Checkout /> : <Navigate to="/sign-in" />}
+            />
             <Route path="*" element={<div>Page not found</div>} />
           </Routes>
           <Slidebar />
