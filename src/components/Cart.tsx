@@ -1,25 +1,15 @@
 import { useContext } from "react";
 import { FiTrash2 } from "react-icons/fi";
-import { IoMdArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
-import { SidebarContext } from "../contexts/SlidebarContext";
 import { cartContext } from "../contexts/CartContext";
 
 const Cart = () => {
-  const { isOpen, SetIsOpen } = useContext(SidebarContext);
-  const { cart, clearCart, total, itemAmount } = useContext(cartContext);
+  const { cart, clearCart, total } = useContext(cartContext);
 
   return (
     <div className=" container mx-auto">
-      <div className=" flex items-center py-6 border-b  justify-between">
-        <div
-          onClick={() => SetIsOpen(false)}
-          className=" cursor-pointer w-8 h-8 flex justify-center items-center"
-        >
-          <IoMdArrowForward className=" text-2xl" />
-        </div>
-      </div>
+      <div className=" flex items-center py-6 border-b  justify-between"></div>
       <div className="  flex flex-col gap-y-2 h-3/5   overflow-y-auto overflow-x-hidden border-b    ">
         {cart.map((item) => {
           return <CartItem key={item.id} item={item} />;
