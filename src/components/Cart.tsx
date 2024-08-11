@@ -8,7 +8,7 @@ const Cart = () => {
   const { cart, clearCart, total } = useContext(cartContext);
 
   return (
-    <div className=" container mx-auto">
+    <div className=" container mx-auto h-screen">
       <div className=" flex items-center py-6 border-b  justify-between"></div>
       <div className="  flex flex-col gap-y-2 h-3/5   overflow-y-auto overflow-x-hidden border-b    ">
         {cart.map((item) => {
