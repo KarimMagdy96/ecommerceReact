@@ -6,20 +6,13 @@ import CartItem from "./CartItem";
 import { SidebarContext } from "../contexts/SlidebarContext";
 import { cartContext } from "../contexts/CartContext";
 
-const Slidebar = () => {
+const Cart = () => {
   const { isOpen, SetIsOpen } = useContext(SidebarContext);
   const { cart, clearCart, total, itemAmount } = useContext(cartContext);
 
   return (
-    <div
-      className={`${
-        isOpen ? "right-0" : " -right-full"
-      } w-full bg-white fixed top-0 h-full shadow-2xl md:w-[40vw] xl:w-[32vw] transition-all duration-300 z-20 px-4 lg:px-[35px] `}
-    >
+    <div className=" container mx-auto">
       <div className=" flex items-center py-6 border-b  justify-between">
-        <div className=" uppercase text-sm font-semibold">
-          Shopping Cart ({itemAmount})
-        </div>
         <div
           onClick={() => SetIsOpen(false)}
           className=" cursor-pointer w-8 h-8 flex justify-center items-center"
@@ -27,7 +20,7 @@ const Slidebar = () => {
           <IoMdArrowForward className=" text-2xl" />
         </div>
       </div>
-      <div className="  flex flex-col gap-y-2 h-3/5   overflow-y-auto overflow-x-hidden border-b  border  ">
+      <div className="  flex flex-col gap-y-2 h-3/5   overflow-y-auto overflow-x-hidden border-b    ">
         {cart.map((item) => {
           return <CartItem key={item.id} item={item} />;
         })}
@@ -45,12 +38,6 @@ const Slidebar = () => {
       </div>
       <div className="  flex flex-col ">
         <Link
-          className=" bg-gray-200 text-center font-semibold p-3  mb-3"
-          to={"/cart"}
-        >
-          View Cart
-        </Link>
-        <Link
           className=" text-white font-semibold text-center bg-black p-3  mb-3 "
           to={""}
         >
@@ -61,4 +48,4 @@ const Slidebar = () => {
   );
 };
 
-export default Slidebar;
+export default Cart;

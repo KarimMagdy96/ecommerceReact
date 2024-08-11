@@ -5,7 +5,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Slidebar from "./components/Slidebar";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-
+import Cart from "./components/Cart";
 function App() {
   return (
     <>
@@ -15,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="*" element={<div>Page not found</div>} />
           </Routes>
           <Slidebar />
