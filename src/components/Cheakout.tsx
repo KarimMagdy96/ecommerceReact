@@ -33,13 +33,9 @@ const Checkout = () => {
 
   return (
     <>
-      {clientSecret ? (
-        <Elements stripe={stripePromise} options={options}>
-          <CheckoutForm />
-        </Elements>
-      ) : (
-        <div>Loading...</div>
-      )}
+      <Elements stripe={stripePromise} options={options}>
+        <CheckoutForm />
+      </Elements>
     </>
   );
 };

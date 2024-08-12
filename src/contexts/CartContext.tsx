@@ -1,5 +1,9 @@
 import React, { createContext, ReactNode, useEffect, useState } from "react";
 import { product } from "./ProdactContext";
+import { useAuth } from "@clerk/clerk-react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 interface addToCartType {
   addToCart: (product: product, id: number) => void;
   cart: product[];
@@ -28,7 +32,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cart, setCart] = useState<[] | any>([]);
   const [itemAmount, setItemAmount] = useState<number>(0);
   const [total, setTotal] = useState<number>(0);
-
+  const { isSignedIn } = useAuth();
   useEffect(() => {
     const total = cart.reduce((accumulator: any, currentValue: any) => {
       return accumulator + currentValue.price * currentValue.amount;
@@ -46,10 +50,13 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   }, [cart]);
 
   const addToCart = (product: product, id: number) => {
+    const notify = () => toast(isSignedIn ? "Added to cart" : "Please sign in");
+    notify();
     const newItem = { ...product, amount: 1 };
 
     const CartItem: any = cart.find((item: any) => item.id === id);
-    if (CartItem) {
+
+    if (CartItem && isSignedIn) {
       const newCart: any = [...cart].map((item: any) => {
         if (item.id === id) {
           return { ...item, amount: CartItem.amount + 1 };
@@ -59,7 +66,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       });
       setCart(newCart);
     } else {
-      setCart([...cart, newItem]);
+      isSignedIn && setCart([...cart, newItem]);
     }
   };
   const removeCartItem = (id: number) => {
