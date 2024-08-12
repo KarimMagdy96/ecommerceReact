@@ -13,7 +13,7 @@ const Checkout = () => {
     currency: "usd",
     amount: 100,
   };
-
+  console.log(options);
   return (
     <Elements stripe={stripePromise} options={options}>
       <CheckoutForm />

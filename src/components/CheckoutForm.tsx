@@ -9,57 +9,23 @@ const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const handleSubmit = async (event: { preventDefault: () => void }) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    if (elements == null || stripe == null) {
+    if (!stripe || !elements) {
       return;
     }
 
-    // Trigger form validation and wallet collection
-    const { error: submitError } = await elements.submit();
-    if (submitError?.message) {
-      console.log(submitError.message);
-      return;
-    }
+    const result = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        return_url: "https://www.youtube.com/watch?v=t9bz_FsYjHY&t=11816s",
+      },
+    });
 
-    try {
-      // Call the serverless function to create a PaymentIntent and get the clientSecret
-      const res = await fetch("/api/create-payment-intent", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          currency: "usd",
-          email: "karimmagdy96@gmail.com",
-          amount: 10, // Stripe expects the amount in cents
-          paymentMethodType: "card",
-        }),
-      });
-
-      if (!res.ok) {
-        throw new Error("Failed to create PaymentIntent");
-      }
-
-      const { client_secret: clientSecret } = await res.json();
-
-      // Use the clientSecret to confirm the payment with Stripe
-      const { error } = await stripe.confirmPayment({
-        elements,
-        clientSecret,
-        confirmParams: {
-          return_url: `${window.location.origin}/success`,
-        },
-      });
-
-      if (error) {
-        console.log(error.message);
-      } else {
-        // Redirect will happen automatically on success
-      }
-    } catch (error) {
-      console.error(error);
+    if (result.error) {
+      console.error(result.error);
+    } else {
+      console.log(result);
     }
   };
 
