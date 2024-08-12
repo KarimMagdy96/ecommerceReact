@@ -69,6 +69,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       isSignedIn && setCart([...cart, newItem]);
     }
   };
+
   const removeCartItem = (id: number) => {
     const newCart = cart.filter((item: any) => {
       return item.id !== id;

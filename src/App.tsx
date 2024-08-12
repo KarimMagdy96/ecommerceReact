@@ -6,10 +6,10 @@ import Slidebar from "./components/Slidebar";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Cart from "./components/Cart";
-import Checkout from "./components/Cheakout";
 import SignInPage from "./components/SignInPage";
 import SignUpPage from "./components/SignUpPage";
 import { useAuth } from "@clerk/clerk-react";
+import Checkout from "./components/Checkout";
 
 function App() {
   const { isSignedIn } = useAuth();

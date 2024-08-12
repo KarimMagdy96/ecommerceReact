@@ -6,9 +6,10 @@ import { cartContext } from "../contexts/CartContext";
 
 const CartLayout = () => {
   const { cart, clearCart, total } = useContext(cartContext);
+
   return (
     <>
-      <div className="  flex flex-col gap-y-2 h-3/5   overflow-y-auto overflow-x-hidden border-b    ">
+      <div className="  flex flex-col gap-y-2 h-3/5   overflow-y-auto overflow-x-hidden border-b">
         {cart.map((item) => {
           return <CartItem key={item.id} item={item} />;
         })}
