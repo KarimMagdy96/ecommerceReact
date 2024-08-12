@@ -6,7 +6,7 @@ import CheckoutForm from "./CheckoutForm";
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 const Checkout = () => {
-  const [clientSecret, setClientSecret] = useState("");
+  const [clientSecret, setClientSecret] = useState<string | null>(null);
 
   useEffect(() => {
     // Fetch the clientSecret from your serverless function
@@ -21,15 +21,15 @@ const Checkout = () => {
       }),
     })
       .then((res) => res.json())
-      .then((data) => setClientSecret(data.client_secret));
+      .then((data) => setClientSecret(data.client_secret))
+      .catch((error) => console.error("Error fetching client secret:", error));
   }, []);
 
-  const options = {
-    clientSecret,
-    appearance: {
-      theme: "stripe", // Optional: Customize Stripe Elements' appearance
-    },
-  };
+  const options = clientSecret
+    ? {
+        clientSecret, // Pass the client secret received from your serverless function
+      }
+    : undefined;
 
   return (
     <>
