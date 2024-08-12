@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { GiHandTruck } from "react-icons/gi";
 
 import { IoMdArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
@@ -28,7 +29,17 @@ const Slidebar = () => {
           <IoMdArrowForward className=" text-2xl" />
         </div>
       </div>
-      <CartLayout />
+      {itemAmount > 0 ? (
+        <CartLayout />
+      ) : (
+        <div className=" flex flex-col justify-center items-center gap-y-4 h-2/3">
+          <GiHandTruck className=" text-[150px] text-primary" />
+
+          <h2 className=" font-medium capitalize ">
+            your cart is empty add product to proceed{" "}
+          </h2>
+        </div>
+      )}
       <div className="  flex flex-col ">
         <Link
           onClick={() => SetIsOpen(false)}
