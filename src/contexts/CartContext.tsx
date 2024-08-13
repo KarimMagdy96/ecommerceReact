@@ -59,8 +59,8 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   }, [cart]);
 
   const addToCart = (product: product, id: number) => {
-    const notify = () => toast(isSignedIn ? "Added to cart" : "Please sign in");
-    notify();
+    const notify = () => toast("Please sign in");
+    !isSignedIn && notify();
     const newItem = { ...product, amount: 1 };
 
     const CartItem: any = cart.find((item: any) => item.id === id);
