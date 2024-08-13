@@ -13,13 +13,18 @@ const Hero = () => {
             <div className=" text-pink-900">Smart</div>
             <div>Comfort & </div>
             <div className="text-pink-900">Affordable</div>
-            <div className="  flex justify-start gap-4">
-              <div className=" hover:bg-transparent hover:text-gray-950 transition-all duration-300 cursor-pointer hover:border-black border bg-pink-900 text-white text-sm px-4 py-4 rounded-md mt-4 text-center">
-                <button>Discover Our Collection</button>
-              </div>
-              <div className=" bg-transparent   cursor-pointer border-gray-800 border-2 text-gray-950  text-sm px-4 py-4 rounded-md mt-4 text-center">
-                <button>Find More</button>
-              </div>
+
+            <div className="  hover:bg-transparent w-[200px] hover:text-gray-950 transition-all duration-300 cursor-pointer hover:border-black border bg-pink-900 text-white text-sm px-4 py-4 rounded-md mt-4 text-center">
+              <button
+                onClick={() =>
+                  window.scrollBy({
+                    top: 750,
+                    behavior: "smooth",
+                  })
+                }
+              >
+                Discover Our Collection
+              </button>
             </div>
           </div>
         </div>

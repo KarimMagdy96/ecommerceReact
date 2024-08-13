@@ -1,5 +1,5 @@
 import { RiStoreFill } from "react-icons/ri";
-import { Navigate } from "react-router-dom";
+
 import { toast } from "react-toastify";
 
 const Checkout = () => {
