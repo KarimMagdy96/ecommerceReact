@@ -34,6 +34,15 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [total, setTotal] = useState<number>(0);
   const { isSignedIn } = useAuth();
   useEffect(() => {
+    const getCart = () => {
+      const cart = localStorage.getItem("cart");
+      if (cart) {
+        setCart(JSON.parse(cart));
+      }
+    };
+    isSignedIn && getCart();
+  }, [isSignedIn]);
+  useEffect(() => {
     const total = cart.reduce((accumulator: any, currentValue: any) => {
       return accumulator + currentValue.price * currentValue.amount;
     }, 0);
@@ -65,8 +74,11 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         }
       });
       setCart(newCart);
+      localStorage.setItem("cart", JSON.stringify(newCart));
     } else {
       isSignedIn && setCart([...cart, newItem]);
+      isSignedIn &&
+        localStorage.setItem("cart", JSON.stringify([...cart, newItem]));
     }
   };
 
@@ -75,9 +87,11 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       return item.id !== id;
     });
     setCart(newCart);
+    localStorage.setItem("cart", JSON.stringify(newCart));
   };
   const clearCart = () => {
     setCart([]);
+    localStorage.setItem("cart", JSON.stringify([]));
   };
   const increaseAmount = (id: number) => {
     const CartItem: any = cart.find((item: any) => item.id === id);
@@ -94,6 +108,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         }
       });
       setCart(newCart);
+      localStorage.setItem("cart", JSON.stringify(newCart));
     }
     if (CartItem.amount < 2) {
       removeCartItem(id);

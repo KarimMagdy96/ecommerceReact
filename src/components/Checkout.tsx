@@ -1,8 +1,15 @@
 import { RiStoreFill } from "react-icons/ri";
+import { Navigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Checkout = () => {
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    const notify = () => toast("thank for your order");
+    notify();
+  };
   return (
-    <form className=" h-screen ">
+    <form onClick={handleSubmit} className=" h-screen ">
       <div>
         <section className="bg-white">
           <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
