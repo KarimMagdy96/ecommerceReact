@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import Cart from "./Cart";
+
 import { cartContext } from "../contexts/CartContext";
 import { useContext } from "react";
 
