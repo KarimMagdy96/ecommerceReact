@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { SidebarContext } from "../contexts/SlidebarContext";
 import { FaRegUserCircle } from "react-icons/fa";
 import { cartContext } from "../contexts/CartContext";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { RiStoreFill } from "react-icons/ri";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { UserButton, useUser } from "@clerk/clerk-react";
@@ -13,7 +13,7 @@ const Header = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(true);
   const [isActive, setIsActive] = useState(false);
   const { itemAmount } = useContext(cartContext);
-
+  let isINcheakOut = useLocation().pathname === "/checkout";
   useEffect(() => {
     window.addEventListener("scroll", () => {
       window.scrollY > 60 ? setIsActive(true) : setIsActive(false);
@@ -33,15 +33,20 @@ const Header = () => {
         </Link>
 
         <div className=" flex gap-5">
-          <div
-            className=" cursor-pointer flex relative   "
-            onClick={() => SetIsOpen(!isOpen)}
-          >
-            <MdOutlineShoppingBag className=" text-2xl " />
-            <div className=" bg-red-500 absolute -right-2 -bottom-2 text-[12px] w-[18px] h-[18px] text-white rounded-full flex justify-center items-center">
-              {itemAmount}
+          {isINcheakOut ? (
+            ""
+          ) : (
+            <div
+              className=" cursor-pointer flex relative   "
+              onClick={() => SetIsOpen(!isOpen)}
+            >
+              <MdOutlineShoppingBag className=" text-2xl " />
+              <div className=" bg-red-500 absolute -right-2 -bottom-2 text-[12px] w-[18px] h-[18px] text-white rounded-full flex justify-center items-center">
+                {itemAmount}
+              </div>
             </div>
-          </div>
+          )}
+
           <div className="">
             <div className="relative">
               <div
